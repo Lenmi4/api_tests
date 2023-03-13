@@ -1,7 +1,7 @@
 import faker
 import pytest
 
-from fixtures.client import Client
+from fixtures.app import StoreApp
 
 fake = faker.Faker()
 
@@ -10,7 +10,7 @@ fake = faker.Faker()
 def app(request):
     url = request.config.getoption("--api-url")
     # Todo: Add logger
-    return Client(url)
+    return StoreApp(url)
 
 
 def pytest_addoption(parser):
