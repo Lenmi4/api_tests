@@ -1,9 +1,11 @@
 from faker import Faker
 
+from fixtures.base import BaseClass
+
 fake = Faker()
 
 
-class CreateUser:
+class CreateUser(BaseClass):
     def __init__(self, id, username, firstname, lastname, email, password, phone, user_status):
         self.id = id
         self.username = username
@@ -26,7 +28,7 @@ class CreateUser:
                           user_status=0)
 
 
-class LoginUser:
+class LoginUser(BaseClass):
     def __init__(self, username, password):
         self.username = username
         self.password = password
@@ -34,3 +36,4 @@ class LoginUser:
     @staticmethod
     def random():
         return LoginUser(username=fake.email(), password=fake.password())
+
