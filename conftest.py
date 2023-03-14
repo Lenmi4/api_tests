@@ -2,7 +2,7 @@ import faker
 import pytest
 
 from fixtures.app import StoreApp
-from fixtures.user.model import CreateUser
+from fixtures.user.model import CreateUser, LoginUser
 
 fake = faker.Faker()
 
@@ -15,9 +15,22 @@ def app(request):
 
 
 @pytest.fixture()
-def auth(app):
+def create(app):
     data = CreateUser.random()
     res = app.user.create_user(data)
+    return res
+
+
+@pytest.fixture()
+def login(app):
+    data = LoginUser.random()
+    res = app.user.login_user(data)
+    return res
+
+
+@pytest.fixture()
+def logout(app):
+    res = app.user.logout_user()
     return res
 
 
