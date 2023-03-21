@@ -1,6 +1,9 @@
+
+
 from requests import Response
 
 from fixtures.user.model import CreateUser, LoginUser, GetUsername
+from common.decorator import logger as log
 
 
 class User:
@@ -14,6 +17,7 @@ class User:
     UPDATED_USER = "/user/{username}"
     DELETE_USER = "/user/{username}"
 
+    # @log("Create new user")
     def create_user(self, data: CreateUser) -> Response:
         """
         https://petstore.swagger.io/#/user/createUser
