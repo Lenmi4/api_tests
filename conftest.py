@@ -29,6 +29,14 @@ def login(app):
 
 
 @pytest.fixture()
+def login_not_create(app):
+    data = {"username": " ",
+            "password": " "}
+    res = app.user.login_user(data=data)
+    return res
+
+
+@pytest.fixture()
 def logout(app):
     res = app.user.logout_user()
     return res
